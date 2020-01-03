@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>calculator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="none">
+  <div *ngIf="!answer">
+    <ion-item class='item'>
+      <ion-label position="fixed">number</ion-label>
+      <ion-input id= 'num' placeholder="Enter first number" [(ngModel)]="n1" autofocus></ion-input>
+    </ion-item>
+    <ion-item class='item'>
+      <ion-label position="fixed">number</ion-label>
+      <ion-input id= 'num' placeholder="Enter second number" [(ngModel)]="n2"></ion-input>
+    </ion-item>
+    <ion-button expand="full" (click)="calculate()">calculate</ion-button>
+  </div>
+  <div *ngIf='answer'>
+    LCM is {{answer}}
+  </div>
+</ion-content>

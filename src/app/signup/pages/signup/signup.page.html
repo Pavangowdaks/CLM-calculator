@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color='none'>
+  <div>
+    <div>
+      <ion-item>
+        <ion-label position="fixed">Name</ion-label>
+        <ion-input type="text" placeholder="Enter the name" [(ngModel)]="user.name" autofocus></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Email</ion-label>
+        <ion-input type="email" placeholder="Enter the email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Password</ion-label>
+        <ion-input type="password" placeholder="Enter the password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">password</ion-label>
+        <ion-input type="password" placeholder="Re-Enter Password" [(ngModel)]="user.confirmPassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Phone</ion-label>
+        <ion-input type="number" placeholder="Enter the phone number" [(ngModel)]="user.phone"></ion-input>
+      </ion-item>
+    </div>
+    <div class="ion-text-center">
+      <ion-button class="signup-btn"  fill="outline" (click)="createAccount()">Create My Account</ion-button>
+    </div>
+  </div>
+</ion-content>
