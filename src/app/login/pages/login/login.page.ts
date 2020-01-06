@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
-import { AlertController, LoadingController, MenuController, Events, NavController } from '@ionic/angular';
-import { AuthenticationService } from '../../../common/services/authentication/authentication.service'
+import { AlertController } from '@ionic/angular';
+
+export class User {
+    email: string;
+    password: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -10,22 +15,18 @@ import { AuthenticationService } from '../../../common/services/authentication/a
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public email: string;
-  public password: number;
-  public user: any = {};
-  public data: any=[];
+  public user:User = new User();
 
   constructor(
+    public fAuth: AngularFireAuth,
     private router: Router,
     private alertCtrl: AlertController,
-    public events: Events,
-    private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit() {
   }
 
-  async loginErrorAlert(title, message) {
+  public async loginErrorAlert(title, message) {
     const alertCt = await this.alertCtrl.create({
       header: title,
       message: message,
@@ -34,18 +35,23 @@ export class LoginPage implements OnInit {
     await alertCt.present();
   }
 
-  public login() {
-    console.warn(this.user);
-    this.data = this.authenticationService.logins(this.user);
-    console.warn('vm', this.data);
-    if (this.data.length === 0) {
-      return this.loginErrorAlert('Account Not Found', 'Enter valid email/password otherwise Please create an account');
+  public async login() {
+    try {
+      var r = await this.fAuth.auth.signInWithEmailAndPassword(
+        this.user.email,
+        this.user.password
+      );
+      if (r) {
+        this.router.navigateByUrl('dashboards');
+      }
+
+    } catch (err) {
+      return this.loginErrorAlert('login error', err.message);
     }
-    this.router.navigateByUrl('calculator');
   }
 
-  public signUp() {
-    this.router.navigateByUrl('signup');
+  public async signUp() {
+    await this.router.navigateByUrl('signup');
   }
 
 }

@@ -1,0 +1,66 @@
+@mixin grid($repeat:3, $rows:100px, $row-gap:5px, $column-gap:5px) {
+  display: grid;
+  grid-template-columns: repeat($repeat, 1fr);
+  grid-auto-rows: minmax($rows, auto);
+  grid-row-gap:  $row-gap;
+  grid-column-gap: $column-gap;
+}
+
+@mixin grid-item-flex($content: center, $items: center, $direction: column) {
+  display: flex;
+  justify-content: $content;
+  align-items: $items;
+  flex-direction: $direction;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+}
+
+ion-title{
+  margin-left: 3rem;
+}
+
+ion-content{
+  background-color: lighten(#9d5456, 40%);
+  background-size: 100% 100%;;
+}
+
+  img{
+    margin-top: 20px;
+    height: 120px;
+  }
+
+  .home-flex{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-grid{
+    @include grid(2, 100px, 30px, 30px);
+  }
+
+  .home-item{
+    @include grid-item-flex();
+    border-radius: 5px;
+    width: 130px;
+    background-color: darken(#ffffff, 15%);
+  }
+
+  .home-icon{
+    margin-bottom: 8px;
+    font-size: 3em;
+  }
+
+  .icons{
+    margin-left: 3rem;
+    font-size: 2em;
+    color: var(--ion-color-light);
+  }
+
+  ion-footer.md.footer-md.hydrated{
+    background: black;
+  }
+
+  .social-media-icon{
+    font-size: 2.5em;
+    color: var(--ion-color-light);
+  }

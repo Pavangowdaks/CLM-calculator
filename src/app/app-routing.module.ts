@@ -16,6 +16,18 @@ const routes: Routes = [
     path: 'calculator',
     loadChildren: () => import('./calculator/pages/calculator/calculator.module').then( m => m.CalculatorPageModule)
   },
+  {
+    path: 'dashboards',
+    loadChildren: () => import('./dashboard/pages/dashboards/dashboards.module').then( m => m.DashboardsPageModule)
+  },
+  {
+    path: 'contact-us',
+    loadChildren: () => import('./contact-us/pages/contact-us/contact-us.module').then( m => m.ContactUsPageModule)
+  },
+  {
+    path: 'sign-out',
+    loadChildren: () => import('./sign-out/pages/sign-out/sign-out.module').then( m => m.SignOutPageModule)
+  },
 ];
 
 @NgModule({

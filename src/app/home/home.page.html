@@ -1,12 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">
       LCM Calculator
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="none">
+<ion-content fullscreen color="none">
+  <div class="ion-text-center">
+    <img class="img" src="assets/images/appzuidash.png" alt="appzuidash">
+  </div>
+
   <div class="login-container ion-margin" >
     <div class="ion-text-center"> 
       <ion-button class="login-btn" fill="outline" (click)="login()">Login</ion-button>
@@ -14,8 +18,15 @@
     <div class="ion-text-center" >
       <ion-button class="signup-btn" fill="outline" (click)="signUp()">New User? SignUp</ion-button>
     </div>
-    <div class="ion-text-center">
+    <!-- <div class="ion-text-center">
       <ion-button class="skip-btn" (click)="skipLogin()">Skip Login</ion-button>
-    </div>
+    </div> -->
   </div>
 </ion-content>
+
+<ion-footer no-border>
+  <div class="ion-text-center">
+    <img src="assets/images/appzui.jpg" alt="appzui">
+  </div>
+</ion-footer>
+

@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCCsAswMsbEdxj281s7dq92_Mg1i6n1DTU",
+    authDomain: "clm-calculator-app.firebaseapp.com",
+    databaseURL: "https://clm-calculator-app.firebaseio.com",
+    projectId: "clm-calculator-app",
+    storageBucket: "clm-calculator-app.appspot.com",
+    messagingSenderId: "102292536863",
+    appId: "1:102292536863:web:549f6c2f738b2173481f2a"
+  }
 };
 
 /*

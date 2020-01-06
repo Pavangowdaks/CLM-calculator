@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController, MenuController, Events, NavController } from '@ionic/angular';
+import { Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +20,6 @@ export class HomePage {
 
   public signUp() {
     this.router.navigateByUrl('signup');
-    // this.navCtrl.push('app-sign-up');
-  }
-
-  public skipLogin() {
-    this.router.navigateByUrl('home');
-    // this.navCtrl.navigateRoot('app-home');
   }
 
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding" color="none">
-  <div *ngIf="!answer">
+  <div>
     <ion-item class='item'>
       <ion-label position="fixed">number</ion-label>
       <ion-input id= 'num' placeholder="Enter first number" [(ngModel)]="n1" autofocus></ion-input>
@@ -19,7 +19,15 @@
     </ion-item>
     <ion-button expand="full" (click)="calculate()">calculate</ion-button>
   </div>
+  
   <div *ngIf='answer'>
-    LCM is {{answer}}
+    <ion-card color="light">
+    <ion-card-header class="ion-text-center ion-no-padding">
+      <h3><u>answer</u></h3>
+    </ion-card-header>
+    <ion-card-content>
+      LCM of {{n1}} and {{n2}} is <b>{{answer}}</b>.
+    </ion-card-content>
+  </ion-card>
   </div>
 </ion-content>

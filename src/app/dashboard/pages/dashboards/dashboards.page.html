@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">Dashboard</ion-title>
+    <ion-button (click)="logOut()" slot="end" size="small" color="medium">LogOut</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen color='none'>
+  <div class="ion-text-center">
+    <img src="assets/images/appzuidash.png" alt="appzuidash">
+  </div>
+  <div class="home-flex">
+    <div class="home-grid">
+      <div class="home-item" (click)="calculator()"><i class="fas fa-calculator home-icon"></i>CALCULATOR</div>
+      <div class="home-item" (click)="contactUs()"><i class="fas fa-phone-alt home-icon"></i>CONTACT US</div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer no-border>
+  <div>
+    <span class="ion-margin" (click)="openSocialMedia('facebook')"><i class="fab fa-facebook-square icons"></i></span>
+    <span class="ion-margin" (click)="openSocialMedia('google')"><i class="fab fa-google icons"></i></span>
+    <span class="ion-margin" (click)="openSocialMedia('map')"><i class="far fa-map icons"></i></span>
+  </div>
+</ion-footer>

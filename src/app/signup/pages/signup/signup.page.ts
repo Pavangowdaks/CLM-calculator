@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController, MenuController, Events, NavController } from '@ionic/angular';
-import { AuthenticationService } from '../../../common/services/authentication/authentication.service'
+import { AlertController } from '@ionic/angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+export class User {
+    email: string;
+    password: string;
+}
 
 @Component({
   selector: 'app-signup',
@@ -9,17 +14,11 @@ import { AuthenticationService } from '../../../common/services/authentication/a
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  public email: string;
-  public password: string;
-  public name: string;
-  public phone: number;
-  public confirmPassword: string;
-  public regex = /^\d{10}$/;
-  public user: any = {};
+  public user:User = new User();
 
   constructor(
+    public fAuth: AngularFireAuth,
     private alertCtrl: AlertController,
-    private authenticationService: AuthenticationService,
     private router: Router,
   ) { }
 
@@ -36,22 +35,22 @@ export class SignupPage implements OnInit {
     await alertCt.present();
   }
 
-  public createAccount() {
-    console.warn(this.user.email, this.user.password, this.user.name, this.user.phone);
-    if(!this.user.email || !this.user.password || !this.user.confirmPassword || !this.user.name || !this.user.phone) {
-      return this.signUpWarningMessage('Invalid SignUp', 'fill all the fields');
-    } else {
-      if(this.user.confirmPassword !== this.user.password) {
-        return this.signUpWarningMessage('Invalid password', 'password and confirm password is mismatch');
+  public async createAccount() {
+    try {
+      if (!this.user.email || !this.user.password) {
+        return this.signUpWarningMessage('Invalid SignUp', 'fill all the fields');
+      } 
+      var r = await this.fAuth.auth.createUserWithEmailAndPassword(
+        this.user.email,
+        this.user.password
+      );
+      if (r) {
+        this.router.navigateByUrl('dashboards');
       }
 
-      if (!this.regex.test(this.user.phone)) {
-        return this.signUpWarningMessage('Invalid Number', 'Please enter 10 digits phone number. Ex. 8722258171');
-      }
+    } catch (err) {
+      return this.signUpWarningMessage('Invalid SignUp', err.message);
     }
-    let data = this.authenticationService.create(this.user).toPromise();
-    this.router.navigateByUrl('calculator');
-    
   }
 
 }

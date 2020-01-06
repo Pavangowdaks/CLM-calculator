@@ -25,15 +25,12 @@ export class CalculatorPage implements OnInit {
   public gcd = (n1, n2) => {
     let lcm = (n1 > n2) ? n1 : n2;
 
-    while(true)
-    {
-        if( lcm % n1 == 0 && lcm % n2 == 0 )
-        {
-            break;
-        }
-        ++lcm;
+    while (true) {
+      if ( lcm % n1 === 0 && lcm % n2 === 0 ) {
+        break;
+      }
+      ++lcm;
     }
     return lcm;
   }
-  
 }
