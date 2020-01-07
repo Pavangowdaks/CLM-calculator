@@ -11,11 +11,7 @@
   <div>
     <ion-item class='item'>
       <ion-label position="fixed">number</ion-label>
-      <ion-input id= 'num' placeholder="Enter first number" [(ngModel)]="n1" autofocus></ion-input>
-    </ion-item>
-    <ion-item class='item'>
-      <ion-label position="fixed">number</ion-label>
-      <ion-input id= 'num' placeholder="Enter second number" [(ngModel)]="n2"></ion-input>
+      <ion-input placeholder="Enter first number" [(ngModel)]="n1" autofocus></ion-input>
     </ion-item>
     <ion-button expand="full" (click)="calculate()">calculate</ion-button>
   </div>
@@ -26,7 +22,7 @@
       <h3><u>answer</u></h3>
     </ion-card-header>
     <ion-card-content>
-      LCM of {{n1}} and {{n2}} is <b>{{answer}}</b>.
+      LCM of {{n1}} is <b>{{answer}}</b>.
     </ion-card-content>
   </ion-card>
   </div>

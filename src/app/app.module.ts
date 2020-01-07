@@ -9,7 +9,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppComponent } from './app.component';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -33,7 +35,9 @@ export const CREDENTIALS = {
     BrowserModule,
     AngularFireModule.initializeApp(CREDENTIALS),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     HttpClientModule,
+    AngularFireDatabaseModule,
     FontAwesomeModule,
     IonicModule.forRoot(),
     AppRoutingModule
